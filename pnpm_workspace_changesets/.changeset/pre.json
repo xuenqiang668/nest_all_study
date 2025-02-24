@@ -1,0 +1,9 @@
+{
+  "mode": "pre",
+  "tag": "beta",
+  "initialVersions": {
+    "@qftjs/monorepo1": "1.0.0",
+    "@qftjs/monorepo2": "1.0.0"
+  },
+  "changesets": []
+}
