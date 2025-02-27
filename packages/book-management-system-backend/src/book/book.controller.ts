@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Delete, Get, Param, Post, Put, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Delete, Get, Param, Post, Put, Query, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { BookService } from './book.service';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { AddBookDto } from './dto/add-book.dto';
@@ -22,7 +22,7 @@ export class BookController {
       if (['.png', '.jpg', '.gif'].includes(extName)) {
         callback(null, true);
       } else {
-        callback(new BadRequestException('only upload img'), false)
+        callback(new BadRequestException('only upload img[png, jpg, jif]'), false)
       }
     }
   }))
@@ -34,8 +34,8 @@ export class BookController {
   }
 
   @Get('list')
-  async list() {
-    return this.bookService.list()
+  async list(@Query('name') name: string) {
+    return this.bookService.list(name)
   }
 
   @Get('find/:id')

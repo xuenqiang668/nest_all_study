@@ -37,10 +37,6 @@ export class UserService {
 
   async login(loginUserDto: LoginUserDto) {
     const users: User[] = await this.dbService.read()
-
-
-
-
     const foundUser = users.find(f => f.username == loginUserDto.username)
 
     if (!foundUser) {
